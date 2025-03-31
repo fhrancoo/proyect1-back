@@ -28,8 +28,11 @@ let USERS = [
 export class UserService {
   create(createUserDto: CreateUserDto) {
 
+
+    const lastId = Math.max(...USERS.map(user => user.id), 0)
+
     const newUSER = {
-      id: Math.random(),
+      id: lastId + 1,
       ...createUserDto
     }
 
