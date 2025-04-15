@@ -16,9 +16,9 @@ export class UserService {
   async findAll() {
     return await this.prisma.user.findMany(
       {
-       include: {
-        profile: true 
-       } 
+        include: {
+          profile: true
+        }
       }
     );
   }
@@ -27,6 +27,9 @@ export class UserService {
     return await this.prisma.user.findUnique({
       where: {
         id
+      },
+      include: {
+        profile: true
       }
     })
   }
@@ -43,7 +46,10 @@ export class UserService {
       where: {
         id
       },
-      data: updateUserDto
+      data: updateUserDto,
+      include: {
+        profile: true
+      }
     })
 
     return user;
